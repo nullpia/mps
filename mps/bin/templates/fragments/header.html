@@ -48,7 +48,12 @@
 
 <!-- content-header -->
 <section th:fragment="content-header" class="content-header">
-	<h1>화면제목<small>Optional description</small></h1>
+	<h1 th:text="${menu.menuNm}"><small></small></h1>
+	
+	<ol class="breadcrumb" th:each="path : ${menuPaths}">
+		<li><a th:href="@{/router/{path.menuId}}" th:text="${path.menuNm}"><i class="fa fa-dashboard"></i></a></li>
+	</ol>
+	
 	<ol class="breadcrumb">
 		<li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
 		<li class="active">Here</li>

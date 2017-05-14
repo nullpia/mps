@@ -38,10 +38,18 @@ public class WebControllerAdvice {
 			 String menuId = uri.substring(8);
 			 model.addAttribute("router", menuId);
 
+			 logger.info("current routerId = {}", menuId);
+			 
 			 Menu menu = menuService.selectMenu(menuId);
 			 model.addAttribute("menu", menu);
 			 List<Menu> paths = menuService.selectPaths(menuId);
+			 
+			 logger.info("path count = {}", paths.size());
+			 for( Menu path : paths) {
+				 logger.info("path = {}", path.getMenuId());
+			 }
 			 model.addAttribute("menuPaths", paths);
+			 
 
 		 }
     }

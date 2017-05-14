@@ -3,7 +3,7 @@ package com.nullpia.mps.app.common.domain;
 public class Menu {
 	private String menuId;
 	private String menuPid;
-	private String quickId;
+	private String resourceId;
 	private String menuNm;
 	private int lvlNo;
 	private int srtNo;
@@ -24,11 +24,11 @@ public class Menu {
 	public void setMenuPid(String menuPid) {
 		this.menuPid = menuPid;
 	}
-	public String getQuickId() {
-		return quickId;
+	public String getResourceId() {
+		return resourceId;
 	}
-	public void setQuickId(String quickId) {
-		this.quickId = quickId;
+	public void setResourceId(String resourceId) {
+		this.resourceId = resourceId;
 	}
 	public String getMenuNm() {
 		return menuNm;

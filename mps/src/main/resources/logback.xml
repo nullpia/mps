@@ -7,7 +7,7 @@
     </encoder>
   </appender>
   
-  <logger name="com.nullpia" level="INFO" additivity="false">>
+  <logger name="com.nullpia" level="DEBUG" additivity="false">>
     <appender-ref ref="STDOUT" />
   </logger>  
   
