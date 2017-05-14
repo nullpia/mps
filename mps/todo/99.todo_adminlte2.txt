@@ -1,0 +1,7 @@
+bootstrap admin lte2
+	npm install --save admin-lte
+
+http://fontawesome.io/
+	
+https://github.com/driftyco/ionicons
+	css, fonts 

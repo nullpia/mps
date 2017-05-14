@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<!-- main-header -->
+<header th:fragment="main-header" class="main-header">
+	<!-- Logo -->
+	<a th:href="@{/}" class="logo">
+		<span class="logo-mini"><b>MPS</b></span>
+		<span class="logo-lg"><b>Nullpia</b>MPS</span>
+	</a>
+
+	<!-- Header Navbar -->
+	<nav class="navbar navbar-static-top" role="navigation">
+		<!-- Sidebar toggle button-->
+		<a href="#" class="sidebar-toggle" data-toggle="offcanvas"
+			role="button"> <span class="sr-only">Toggle Navigation</span>
+		</a>
+		<!-- Navbar Right Menu -->
+		<div class="navbar-custom-menu">
+			<ul class="nav navbar-nav">
+				<li class="messages-menu"><a href="#">로그인</a></li>
+				<li class="messages-menu"><a href="#">회원가입</a></li>
+			</ul>
+		</div>
+	</nav>
+</header>
+<!-- /main-header -->
+
+<!-- main-sidebar -->
+<aside th:fragment="main-sidebar" class="main-sidebar">
+	<section class="sidebar">
+		<ul class="sidebar-menu">
+			<li class="header">HEADER</li>
+			<!-- Optionally, you can add icons to the links -->
+			<li class="active"><a href="#"><i class="fa fa-link"></i> <span>Link</span></a></li>
+			<li><a href="#"><i class="fa fa-link"></i> <span>Another Link</span></a></li>
+			<li class="treeview"><a href="#"><i class="fa fa-link"></i><span>Multilevel</span>
+				<span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span> </a>
+				<ul class="treeview-menu">
+					<li><a href="#">Link in level 2</a></li>
+					<li><a href="#">Link in level 2</a></li>
+				</ul>
+			</li>
+		</ul>
+	</section>
+</aside>
+<!-- /main-sidebar -->
+
+<!-- content-header -->
+<section th:fragment="content-header" class="content-header">
+	<h1>화면제목<small>Optional description</small></h1>
+	<ol class="breadcrumb">
+		<li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
+		<li class="active">Here</li>
+	</ol>
+	<!-- li th:class="${#strings.contains(router,'index')} ? 'active' : ''"><a th:href="@{/router/index}">Home </a></li-->
+	
+</section>
+<!-- /content-header -->
+
+</html>

@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.nullpia.mps.api.blog.mapper.PostMapper">
+    <select id="listPost" resultType="com.nullpia.mps.api.blog.domain.Post">
+        SELECT A.POST_ID    AS POST_ID
+             , A.CATG_ID    AS CATG_ID
+             , A.POST_TITL  AS POST_TITL
+             , A.POST_CN    AS POST_CN
+             , A.READ_CNT   AS READ_CNT
+             , A.CRE_USR_ID AS CRE_USR_ID
+             , DATE_FORMAT(A.CRE_DTTM,'%Y%m%d%H%i%s') AS CRE_DTTM
+             , A.MOD_USR_ID AS MOD_USR_ID
+             , DATE_FORMAT(A.MOD_DTTM,'%Y%m%d%H%i%s') AS MOD_DTTM
+        FROM   TB_BLOG_POST A
+        WHERE 1=1
+        <if test="@com.nullpia.mps.utility.Strings@hasLength(postTitl)">
+        AND   A.POST_TITL LIKE CONCAT('%',#{postTitl},'%')
+    	</if>
+        ORDER BY CRE_DTTM DESC
+    </select>
+
+    <select id="countPost" parameterType="com.nullpia.mps.api.blog.domain.Post" resultType="int">
+        SELECT count(*) as rowCnt
+        FROM   TB_BLOG_POST A
+        WHERE 1=1
+        <if test="@com.nullpia.mps.utility.Strings.@hasLength(postTitl)">
+        AND   A.POST_TITL LIKE CONCAT('%',#{postTitl},'%')
+    	</if>
+    </select>
+
+    
+    <select id="selectPost" parameterType="int" resultType="com.nullpia.mps.api.blog.domain.Post">
+        SELECT A.POST_ID    AS POST_ID
+             , A.CATG_ID    AS CATG_ID
+             , A.POST_TITL  AS POST_TITL
+             , A.POST_CN    AS POST_CN
+             , A.READ_CNT   AS READ_CNT
+             , A.CRE_USR_ID AS CRE_USR_ID
+             , DATE_FORMAT(A.CRE_DTTM,'%Y%m%d%H%i%s') AS CRE_DTTM
+             , A.MOD_USR_ID AS MOD_USR_ID
+             , DATE_FORMAT(A.MOD_DTTM,'%Y%m%d%H%i%s') AS MOD_DTTM
+        FROM   TB_BLOG_POST A
+        WHERE  POST_ID = #{postId,jdbcType=NUMERIC}
+    </select>
+    
+    <insert id="insertPost" parameterType="com.nullpia.mps.api.blog.domain.Post">
+	INSERT INTO TB_BLOG_POST(
+		POST_ID, CATG_ID, POST_TITL, POST_CN, READ_CNT, CRE_USR_ID, CRE_DTTM, MOD_USR_ID, MOD_DTTM
+	) VALUES (
+		#{postId,jdbcType=NUMERIC}, 
+		#{catgId,jdbcType=NUMERIC}, 
+		#{postTitl,jdbcType=VARCHAR}, 
+		#{postCn,jdbcType=VARCHAR}, 
+		1, 
+		#{creUsrId,jdbcType=VARCHAR}, 
+		CURRENT_TIMESTAMP, 
+		#{modUsrId,jdbcType=VARCHAR}, 
+		CURRENT_TIMESTAMP
+	)
+    </insert>
+
+    <update id="updatePost" parameterType="com.nullpia.mps.api.blog.domain.Post">
+	UPDATE 	TB_BLOG_POST
+	SET 	CATG_ID   = #{catgId,jdbcType=NUMERIC},
+			POST_TITL = #{postTitl,jdbcType=VARCHAR}, 
+			POST_CN   = #{postCn,jdbcType=VARCHAR}, 
+			MOD_USR_ID= #{modUsrId,jdbcType=VARCHAR}, 
+			MOD_DTTM  = CURRENT_TIMESTAMP
+	WHERE  POST_ID = #{postId,jdbcType=NUMERIC}
+    </update>
+
+    <update id="updateReadCount" parameterType="long">
+	UPDATE 	TB_BLOG_POST
+	SET 	READ_CNT = READ_CNT+1
+	WHERE   POST_ID = #{postId,jdbcType=NUMERIC}
+    </update>
+    
+    <delete id="deletePost" parameterType="int">
+	DELETE FROM TB_BLOG_POST
+	WHERE  POST_ID = #{postId,jdbcType=NUMERIC}
+    </delete>
+
+</mapper>

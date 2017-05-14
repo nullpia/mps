@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sd="http://www.thymeleaf.org/spring-data"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="/layouts/default">
+<head>
+</head>
+<body>
+<div class="container" layout:fragment="content">
+	<form class="form-horizontal">
+		<div class="form-group">
+			<label for="inputEmail" class="col-sm-2 control-label">ID</label>
+			<div class="col-sm-6">
+				<input type="email" class="form-control" id="inputEmail" placeholder="占싱몌옙占쏙옙"/>
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="inputPassword" class="col-sm-2 control-label">제목</label>
+			<div class="col-sm-6">
+				<input type="password" class="form-control" id="inputPassword"
+					placeholder="占쏙옙橘占싫�"/>
+				<p class="help-block">제목을 입력하세요.</p>
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="inputPasswordCheck" class="col-sm-2 control-label">비밀번호
+				확占쏙옙</label>
+			<div class="col-sm-6">
+				<input type="password" class="form-control" id="inputPasswordCheck"
+					placeholder="占쏙옙橘占싫� 확占쏙옙"/>
+				<p class="help-block">비밀번호를 입력하세요.</p>
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="inputRipple" class="col-sm-2 control-label">占쏙옙占쏙옙占쌍쇽옙</label>
+			<div class="col-sm-6">
+				<input type="text" class="form-control" id="inputRipple"
+					placeholder="占쏙옙占쏙옙占쌍쇽옙"/>
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="inputName" class="col-sm-2 control-label">占싱몌옙</label>
+			<div class="col-sm-6">
+				<input type="text" class="form-control" id="inputName"
+					placeholder="占싱몌옙"/>
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="inputNumber" class="col-sm-2 control-label">占쌨댐옙占쏙옙占쏙옙호</label>
+			<div class="col-sm-4">
+				<input type="text" class="form-control" id="inputNumber"
+					placeholder="占쌨댐옙占쏙옙占쏙옙호"/>
+				<p class="help-block">- 占쏙옙占쏙옙 占쏙옙占쏙옙占쌍쇽옙占쏙옙.</p>
+			</div>
+			<div class="col-sm-2">
+				<a class="btn btn-default" href="#" role="button">占쏙옙占쏙옙占쏙옙호 占쏙옙占쏙옙</a>
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="inputNumberCheck" class="col-sm-2 control-label">占쏙옙占쏙옙占쏙옙호
+				확占쏙옙</label>
+			<div class="col-sm-6">
+				<input type="text" class="form-control" id="inputNumberCheck"
+					placeholder="占싱몌옙"/>
+				<p class="help-block">占쏙옙占쌜듸옙 占쏙옙占쏙옙占쏙옙호占쏙옙 占쌉뤄옙占쏙옙占쌍쇽옙占쏙옙.</p>
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="inputAgree" class="col-sm-2 control-label">占쏙옙占� 占쏙옙占쏙옙</label>
+			<div class="col-sm-6 checkbox">
+				<label> <input id="agree" type="checkbox"/> <a
+					href="/agreement"> 占싱울옙占쏙옙</a>占쏙옙 占쏙옙占쏙옙占쌌니댐옙.
+				</label>
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="inputName" class="col-sm-2 control-label"></label>
+			<div class="col-sm-6">
+				<button type="submit" class="btn btn-primary">회占쏙옙占쏙옙占쏙옙</button>
+			</div>
+		</div>
+	</form>
+</div>
+</body>
+</html>

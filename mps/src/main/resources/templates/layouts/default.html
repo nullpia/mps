@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+<title>Starter</title>
+<meta charset="utf-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport"/>
+<!-- Common CSS -->
+<head th:replace="fragments/common::common-css"></head>
+</head>
+<body class="hold-transition skin-blue sidebar-mini">
+	<div class="wrapper">
+		<header th:replace="fragments/header::main-header"></header>
+		<aside  th:replace="fragments/header::main-sidebar"></aside>
+		
+		<div class="content-wrapper">
+			<section th:replace="fragments/header::content-header"></section>
+			<section class="content">
+				<!-- Your Page Content Here -->
+				<th:block layout:fragment="content"></th:block>
+			</section>
+		</div>
+
+		<footer th:replace="fragments/footer::footer"></footer>
+	</div>
+
+	<!-- Common Script -->
+	<script th:replace="fragments/common::common-script"></script>
+	<!-- Custom JavaScript -->
+	<th:block layout:fragment="custom-script"></th:block>
+</body>
+</html>

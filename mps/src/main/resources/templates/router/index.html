@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html layout:decorator="/layouts/default" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+</head>
+<body>
+
+<th:block layout:fragment="content">
+<div class="container-fluid">
+	<form id="form1" name="form1" method="post">
+		<div class="form-group">
+			<label class="control-label " for="message_id">URL</label>
+			<input type="text" class="form-control" id="url" name="url" value="http://localhost:8080/api/post/list"/>
+		</div>
+		<div class="form-group">
+			<label class="control-label " for="message_id">Input</label>
+			<textarea class="form-control" id="input" name="input" rows="5">{}</textarea>
+		</div>
+		<div class="form-group">
+			<input type="button" id="submit1" name="submit1" value="전송"/>
+		</div>
+		<div class="form-group">
+			<label class="control-label " for="message_id">Output</label>
+			<textarea class="form-control" id="output" name="output" rows="5"></textarea>
+		</div>
+	</form>
+</div>
+</th:block>
+
+<th:block layout:fragment="custom-script">
+<script type="text/javascript">
+/*<![CDATA[*/
+$(document).ready(function() {
+	$("#submit1").click(function() {
+		var url		= $("#url").val();
+		var data	= $("#input").val();
+		$.ajax({
+			beforeSend : function(xhr){
+	        	xhr.setRequestHeader("ApiKey", "asdfasxdfasdfasdf");
+	        	xhr.setRequestHeader("Content-type","application/json");
+	        },
+	        dataType: "json",
+			type  : "POST",
+			url   : url,
+ 			cache : false,
+ 			data  : data
+		}).then( function(data) {
+			$("#output").text(JSON.stringify(data,'','\t'));
+			
+			vm.todos = [];
+			for(var i = 0; i < data.length; i++) {
+				vm.todos.push(data[i]);
+			}
+		}, function(output) {
+			console.log(output);
+			alert(output.responseJSON.message);
+		});
+	});
+});
+/*]]>*/
+</script>
+</th:block>
+
+</body>
+</html>

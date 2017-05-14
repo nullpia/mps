@@ -1,0 +1,43 @@
+mariadb sequene
+	http://bryan7.tistory.com/101
+
+
+에디터
+	Summernote
+	
+SSL(https)
+	- Lets' Encrypt
+
+권한
+	http://zgundam.tistory.com/48
+	http://peyton.tk/index.php/post/657
+	User - UserRole - Role - RoleResource - Resource
+	
+User     		userId, 	userNm
+				anonymous	
+				nullpia		
+UserRole 		userId, 	roleId
+				anonymous	RO_AA01
+				nullpia		
+				
+Role     		roleId, 	rolePid,	roleNm
+				RO_AA01		null		블로그
+				RO_AA0110	RO_AA01		블로그조회
+				RO_AA0120	RO_AA01		블로그등록
+				RO_AA0130	RO_AA01		블로그수정
+				RO_AA0140	RO_AA01		블로그삭제
+
+RoleResource 	roleId, 	resourceId
+				RO_AA01		AA01
+				RO_AA01		AA01
+				RO_AA01		AA01
+				RO_AA01		AA01
+				
+Resource		resourceId, resourceType, resourceNm, 	protectedYn
+				AA01		PAGE						Y
+				AA0110		OP							Y
+				AA0120		OP							Y
+				AA0130		OP							Y
+				AA0140		OP							Y
+	
+	

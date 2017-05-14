@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.nullpia.mps.api.menu.mapper.MenuMapper">
+    <select id="listPost" resultType="com.nullpia.mps.api.menu.domain.Menu">
+        SELECT A.MENU_ID  	AS MENU_ID
+             , A.MENU_PID 	AS MENU_PID
+             , A.QUICK_ID 	AS QUICK_ID
+             , A.MENU_NM  	AS MENU_NM
+             , A.LVL_NO   	AS LVL_NO
+             , A.SRT_NO   	AS SRT_NO
+             , A.CRE_USR_ID AS CRE_USR_ID
+             , DATE_FORMAT(A.CRE_DTTM,'%Y%m%d%H%i%s') AS CRE_DTTM
+             , A.MOD_USR_ID AS MOD_USR_ID
+             , DATE_FORMAT(A.MOD_DTTM,'%Y%m%d%H%i%s') AS MOD_DTTM
+        FROM   TB_COMM_MENU A
+        WHERE 1=1
+        <if test="@com.nullpia.mps.utility.Strings@hasLength(menuId)">
+        AND   A.MENU_ID = #{menuId}
+    	</if>
+        <if test="@com.nullpia.mps.utility.Strings@hasLength(quickId)">
+        AND   A.QUICK_ID = #{quickId}
+    	</if>
+        <if test="@com.nullpia.mps.utility.Strings@hasLength(menuNm)">
+        AND   A.MENU_NM LIKE CONCAT('%',#{menuNm},'%')
+    	</if>
+        ORDER BY SRT_NO ASC
+    </select>
+
+    <select id="countPost" parameterType="com.nullpia.mps.api.menu.domain.Menu" resultType="int">
+        SELECT count(*) as rowCnt
+        FROM   TB_COMM_MENU A
+        WHERE 1=1
+        <if test="@com.nullpia.mps.utility.Strings@hasLength(menuNm)">
+        AND   A.MENU_NM LIKE CONCAT('%',#{menuNm},'%')
+    	</if>
+    </select>
+    
+    <select id="selectPost" parameterType="String" resultType="com.nullpia.mps.api.menu.domain.Menu">
+        SELECT A.MENU_ID  AS MENU_ID
+             , A.MENU_PID AS MENU_PID
+             , A.QUICK_ID AS QUICK_ID
+             , A.MENU_NM  AS MENU_NM
+             , A.LVL_NO   AS LVL_NO
+             , A.SRT_NO   AS SRT_NO
+             , A.CRE_USR_ID AS CRE_USR_ID
+             , DATE_FORMAT(A.CRE_DTTM,'%Y%m%d%H%i%s') AS CRE_DTTM
+             , A.MOD_USR_ID AS MOD_USR_ID
+             , DATE_FORMAT(A.MOD_DTTM,'%Y%m%d%H%i%s') AS MOD_DTTM
+        FROM   TB_COMM_MENU A
+        WHERE  A.MENU_ID = #{menuId,jdbcType=NUMERIC}
+    </select>
+    
+    <insert id="insertPost" parameterType="com.nullpia.mps.api.menu.domain.Menu">
+	INSERT INTO TB_COMM_MENU (
+		MENU_ID, MENU_PID, QUICK_ID, MENU_NM, LVL_NO, SRT_NO, CRE_USR_ID, CRE_DTTM, MOD_USR_ID, MOD_DTTM
+	) VALUES (
+		#{menuId,jdbcType=VARCHAR}, 
+		#{menuPid,jdbcType=VARCHAR}, 
+		#{quickId,jdbcType=VARCHAR}, 
+		#{menuNm,jdbcType=VARCHAR}, 
+		#{lvlNo,jdbcType=NUMERIC},
+		#{srtNo,jdbcType=NUMERIC},
+		#{creUsrId,jdbcType=VARCHAR}, 
+		CURRENT_TIMESTAMP, 
+		#{modUsrId,jdbcType=VARCHAR}, 
+		CURRENT_TIMESTAMP
+	)
+    </insert>
+
+    <update id="updatePost" parameterType="com.nullpia.mps.api.menu.domain.Menu">
+	UPDATE 	TB_COMM_MENU
+	SET 	MENU_PID	= #{menuPid,jdbcType=VARCHAR},
+			QUICK_ID	= #{quickId,jdbcType=VARCHAR},
+			MENU_NM 	= #{menuNm,jdbcType=VARCHAR}, 
+			LVL_NO   	= #{lvlNo,jdbcType=NUMERIC}, 
+			SRT_NO		= #{srtNo,jdbcType=NUMERIC},
+			MOD_USR_ID	= #{modUsrId,jdbcType=VARCHAR}, 
+			MOD_DTTM  	= CURRENT_TIMESTAMP
+	WHERE   MENU_ID 	= #{menuId,jdbcType=VARCHAR}
+    </update>
+    
+    <delete id="deletePost" parameterType="String">
+	DELETE FROM TB_COMM_MENU
+	WHERE  MENU_PID = #{menuId,jdbcType=VARCHAR}
+    </delete>
+
+</mapper>

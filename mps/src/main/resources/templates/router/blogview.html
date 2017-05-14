@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sd="http://www.thymeleaf.org/spring-data"
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="/layouts/default">
+<head>
+</head>
+<body>
+<div class="container" layout:fragment="content">
+	<form class="form-horizontal">
+		<div class="form-group">
+			<label for="postId" class="col-sm-2 control-label">ID</label>
+			<div class="col-sm-6">
+				<input type="text" class="form-control" id="postId" placeholder="ID" th:value="${post.postId}"/>
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="postTitl" class="col-sm-2 control-label">제목</label>
+			<div class="col-sm-6">
+				<input type="text" class="form-control" id="postTitl" placeholder="ID" th:value="${post.postTitl}"/>
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="postCn" class="col-sm-2 control-label">내용</label>
+			<div class="col-sm-6">
+				<textarea class="form-control" id="postCn" th:text="${post.postCn}"></textarea>
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="creUsrId" class="col-sm-2 control-label">작성자</label>
+			<div class="col-sm-6">
+				<input type="text" class="form-control" id="creUsrId" placeholder="ID" th:value="${post.creUsrId}"/>
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="creDtm" class="col-sm-2 control-label">작성일시</label>
+			<div class="col-sm-6">
+				<input type="text" class="form-control" id="creDtm" placeholder="ID" th:value="${post.creDtm}"/>
+			</div>
+		</div>
+	</form>
+</div>
+</body>
+</html>

@@ -1,0 +1,74 @@
+http://mikehillyer.com/articles/managing-hierarchical-data-in-mysql/
+
+CREATE TABLE category(
+	category_id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(20) NOT NULL,
+    parent INT DEFAULT NULL
+);
+
+
+출처: http://jwgye.tistory.com/35 [Cycle & Develop]
+
+CREATE DEFINER=`root`@`localhost` FUNCTION `get_group_tree`() RETURNS int(11)
+    READS SQL DATA
+BEGIN
+     
+    /*
+    2015-09-25 계정원
+    그룹 코드로 하위 그룹을 가져오는 재퀴쿼리 역활 함수
+    */
+    DECLARE v_id INT;
+    DECLARE v_parent INT;
+    DECLARE CONTINUE HANDLER FOR NOT FOUND SET @id = NULL;
+     
+    /*입력 받은 ID값*/
+    SET v_parent = @id;
+    SET v_id = -1;
+     
+    /*ID가 없을 경우 재귀쿼리를 실행하지 않는다*/
+	IF @id IS NULL THEN
+        RETURN NULL;
+    END IF;
+     
+    /*반복문 시작*/
+    LOOP
+    	SELECT MIN(grp_no)
+        INTO   @id
+        FROM   t_group
+        WHERE  up_grp_no = v_parent
+        AND    grp_no > v_id
+        AND    use_yn = 'Y';
+         
+    	IF @id IS NOT NULL OR v_parent = @start_with THEN
+    		SET @level = @level + 1;
+    		RETURN @id;
+    	END IF;
+     
+    	SET @level := @level - 1;
+     
+    	SELECT grp_no, up_grp_no
+    	INTO v_id , v_parent
+    	FROM t_group
+    	WHERE grp_no = v_parent;
+    END LOOP;
+END
+
+
+출처: http://jwgye.tistory.com/35 [Cycle & Develop]
+SELECT grp_no
+FROM   t_group
+WHERE  grp_no = '7'
+ 
+UNION ALL
+
+SELECT grp_no
+FROM  (
+        SELECT get_group_tree() AS grp_no
+             , @level AS level
+        FROM  (
+            	SELECT @start_with := '7'
+                     , @id    := @start_with
+                     , @level := 0
+              ) vars JOIN t_group
+	    WHERE @id IS NOT NULL
+      )

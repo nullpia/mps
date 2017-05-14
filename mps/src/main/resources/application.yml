@@ -1,0 +1,43 @@
+
+#------------------------------------------------------------------------
+# application
+#------------------------------------------------------------------------
+app:
+  scheduler:
+    executor-count: 5
+
+#------------------------------------------------------------------------
+# logging : logback-${spring.profiles.active}
+#------------------------------------------------------------------------
+logging:
+  config: classpath:logback.xml
+
+#------------------------------------------------------------------------
+# server
+#------------------------------------------------------------------------
+server:
+  port: 8080
+
+#------------------------------------------------------------------------
+# spring
+#------------------------------------------------------------------------
+spring:
+  thymeleaf:
+    cache: false
+  datasource:
+    username: dev
+    password: comeon74
+    url: jdbc:mariadb://localhost:3306/demo
+    driver-class-name: org.mariadb.jdbc.Driver
+
+#------------------------------------------------------------------------
+# mybatis
+#------------------------------------------------------------------------
+mybatis:
+  mapper-locations: classpath:mappers/**/*.xml
+  configuration:
+    aggressiveLazyLoading: false
+    lazyLoadingEnabled: true
+    mapUnderscoreToCamelCase: true
+
+    
