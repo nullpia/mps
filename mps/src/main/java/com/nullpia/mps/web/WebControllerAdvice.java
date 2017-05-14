@@ -46,7 +46,7 @@ public class WebControllerAdvice {
 			 
 			 logger.info("path count = {}", paths.size());
 			 for( Menu path : paths) {
-				 logger.info("path = {}", path.getMenuId());
+				 logger.info("path = {}, resource = {}", path.getMenuId(), path.getResourceId());
 			 }
 			 model.addAttribute("menuPaths", paths);
 			 

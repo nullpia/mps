@@ -37,6 +37,7 @@ public class IndexController {
     	logger.info("resourceId = {}", menu.getResourceId());
     	return menu.getResourceId();
 	}
+    
     @RequestMapping("/router/user")
 	public String routeUser(Model model, HttpServletRequest request) {
     	Menu menu = menuService.selectMenu("user");
