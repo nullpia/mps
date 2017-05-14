@@ -31,4 +31,16 @@ public class IndexController {
     	return menu.getResourceId();
 	}
 
+    @RequestMapping("/router/menu")
+	public String routeMenu(Model model, HttpServletRequest request) {
+    	Menu menu = menuService.selectMenu("menu");
+    	logger.info("resourceId = {}", menu.getResourceId());
+    	return menu.getResourceId();
+	}
+    @RequestMapping("/router/user")
+	public String routeUser(Model model, HttpServletRequest request) {
+    	Menu menu = menuService.selectMenu("user");
+    	logger.info("resourceId = {}", menu.getResourceId());
+    	return menu.getResourceId();
+	}
 }

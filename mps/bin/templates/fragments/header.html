@@ -50,8 +50,10 @@
 <section th:fragment="content-header" class="content-header">
 	<h1 th:text="${menu.menuNm}"><small></small></h1>
 	
-	<ol class="breadcrumb" th:each="path : ${menuPaths}">
-		<li><a th:href="@{/router/{path.menuId}}" th:text="${path.menuNm}"><i class="fa fa-dashboard"></i></a></li>
+	<ol class="breadcrumb">
+		<li th:each="path : ${menuPaths}">
+			<a th:href="@{/router/{path.menuId}}" th:text="${path.menuNm}"><i class="fa fa-dashboard"></i></a>
+		</li>
 	</ol>
 	
 	<ol class="breadcrumb">
