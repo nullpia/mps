@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.nullpia.mps.api.blog.mapper.PostMapper">
-    <select id="listPost" resultType="com.nullpia.mps.api.blog.domain.Post">
+<mapper namespace="com.nullpia.mps.app.blog.mapper.PostMapper">
+    <select id="listPost" resultType="com.nullpia.mps.app.blog.domain.Post">
         SELECT A.POST_ID    AS POST_ID
              , A.CATG_ID    AS CATG_ID
              , A.POST_TITL  AS POST_TITL
@@ -20,7 +20,7 @@
         ORDER BY CRE_DTTM DESC
     </select>
 
-    <select id="countPost" parameterType="com.nullpia.mps.api.blog.domain.Post" resultType="int">
+    <select id="countPost" parameterType="com.nullpia.mps.app.blog.domain.Post" resultType="int">
         SELECT count(*) as rowCnt
         FROM   TB_BLOG_POST A
         WHERE 1=1
@@ -30,7 +30,7 @@
     </select>
 
     
-    <select id="selectPost" parameterType="int" resultType="com.nullpia.mps.api.blog.domain.Post">
+    <select id="selectPost" parameterType="int" resultType="com.nullpia.mps.app.blog.domain.Post">
         SELECT A.POST_ID    AS POST_ID
              , A.CATG_ID    AS CATG_ID
              , A.POST_TITL  AS POST_TITL
@@ -44,7 +44,7 @@
         WHERE  POST_ID = #{postId,jdbcType=NUMERIC}
     </select>
     
-    <insert id="insertPost" parameterType="com.nullpia.mps.api.blog.domain.Post">
+    <insert id="insertPost" parameterType="com.nullpia.mps.app.blog.domain.Post">
 	INSERT INTO TB_BLOG_POST(
 		POST_ID, CATG_ID, POST_TITL, POST_CN, READ_CNT, CRE_USR_ID, CRE_DTTM, MOD_USR_ID, MOD_DTTM
 	) VALUES (
@@ -60,7 +60,7 @@
 	)
     </insert>
 
-    <update id="updatePost" parameterType="com.nullpia.mps.api.blog.domain.Post">
+    <update id="updatePost" parameterType="com.nullpia.mps.app.blog.domain.Post">
 	UPDATE 	TB_BLOG_POST
 	SET 	CATG_ID   = #{catgId,jdbcType=NUMERIC},
 			POST_TITL = #{postTitl,jdbcType=VARCHAR}, 

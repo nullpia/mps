@@ -1,11 +1,11 @@
-package com.nullpia.mps.api.common.service;
+package com.nullpia.mps.app.common.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.nullpia.mps.api.common.mapper.SequenceMapper;
+import com.nullpia.mps.app.common.mapper.SequenceMapper;
 
 @Service
 public class SequenceService {

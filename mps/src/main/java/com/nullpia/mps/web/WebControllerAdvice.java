@@ -17,18 +17,18 @@ import org.springframework.web.bind.annotation.ModelAttribute;
  */
 @ControllerAdvice
 public class WebControllerAdvice {
-	private static final Logger log = LoggerFactory.getLogger(WebControllerAdvice.class);
-	
+	private static final Logger logger = LoggerFactory.getLogger(WebControllerAdvice.class);
 	
 	@ModelAttribute
 	public void globalAttributes(HttpServletRequest request, HttpServletResponse response, Model model) {
-		
-		
 		String uri = request.getRequestURI();
+		
+		//현재 접속한 리소스에 대한 메뉴/사용자 정보를 설정한다.
 		if(StringUtils.hasLength(uri) && uri.startsWith("/router/")) {
 			model.addAttribute("router", uri.substring(8));
-			log.info("router = {}", uri.substring(8));
+			logger.info("router = {}", uri.substring(8));
 		}
+
     }
 	
 }

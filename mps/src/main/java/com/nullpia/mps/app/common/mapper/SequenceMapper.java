@@ -1,4 +1,4 @@
-package com.nullpia.mps.api.common.mapper;
+package com.nullpia.mps.app.common.mapper;
 
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;

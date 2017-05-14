@@ -1,4 +1,4 @@
-package com.nullpia.mps.api.blog.service;
+package com.nullpia.mps.app.blog.service;
 
 import java.util.List;
 
@@ -6,9 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.nullpia.mps.api.blog.domain.Post;
-import com.nullpia.mps.api.blog.mapper.PostMapper;
-import com.nullpia.mps.api.common.service.SequenceService;
+import com.nullpia.mps.app.blog.domain.Post;
+import com.nullpia.mps.app.blog.mapper.PostMapper;
+import com.nullpia.mps.app.common.service.SequenceService;
 
 @Service
 public class PostService {
