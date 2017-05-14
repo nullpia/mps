@@ -33,24 +33,19 @@ public class WebControllerAdvice {
 		 String uri = request.getRequestURI();
 		
 		 // 현재 접속한 리소스에 대한 메뉴/사용자 정보를 설정한다.
-		 logger.info("URI = {}", uri);
-		 if(StringUtils.hasLength(uri) && uri.startsWith("/router/")) {
+		 if( StringUtils.hasLength(uri) && uri.startsWith("/router/")) {
 			 String menuId = uri.substring(8);
 			 model.addAttribute("router", menuId);
-
-			 logger.info("current routerId = {}", menuId);
 			 
 			 Menu menu = menuService.selectMenu(menuId);
 			 model.addAttribute("menu", menu);
+			 
 			 List<Menu> paths = menuService.selectPaths(menuId);
+			 model.addAttribute("paths", paths);
 			 
-			 logger.info("path count = {}", paths.size());
-			 for( Menu path : paths) {
-				 logger.info("path = {}, resource = {}", path.getMenuId(), path.getResourceId());
-			 }
-			 model.addAttribute("menuPaths", paths);
+			 List<Menu> menus = menuService.listMenu(new Menu());
+			 model.addAttribute("menus", menus);
 			 
-
 		 }
     }
 }

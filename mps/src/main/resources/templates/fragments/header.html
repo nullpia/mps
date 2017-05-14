@@ -43,7 +43,9 @@
 				</ul>
 			</li>
 			
-			<li></li>
+			<li th:each="m : ${menus}">
+				<a th:href="${#strings.isEmpty(m.resourceId)} ? '#' : ${m.menuId}" th:text="${m.menuNm}"><i class="fa fa-dashboard"></i></a>
+			</li>
 		</ul>
 	</section>
 </aside>
@@ -54,8 +56,8 @@
 	<h1 th:text="${menu.menuNm}"><small></small></h1>
 	
 	<ol class="breadcrumb">
-		<li th:each="path : ${menuPaths}">
-			<a href="#" th:href="${#strings.isEmpty(path.resourceId)} ? '' : ${path.menuId}" th:text="${path.menuNm}"><i class="fa fa-dashboard"></i></a>
+		<li th:each="p : ${paths}">
+			<a th:href="${#strings.isEmpty(p.resourceId)} ? '#' : ${p.menuId}" th:text="${p.menuNm}"><i class="fa fa-dashboard"></i></a>
 		</li>
 	</ol>
 	<!-- https://vvirlan.wordpress.com/2015/10/04/thymeleaf-strings-utility-method-for-string-objects/ -->

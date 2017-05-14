@@ -21,7 +21,7 @@ public class BlogController {
     @Autowired
     PostService postService;
     
-    @RequestMapping("/router/blogs")
+    @RequestMapping("/router/blog")
    	public String list(Model model) {
     	
     	List<Post> posts = postService.listPost( new Post() );
@@ -29,7 +29,7 @@ public class BlogController {
     		post.setCreDttm(Dates.format(post.getCreDttm(),"yyyy.MM.dd HH:mm:ss"));
     	}
     	model.addAttribute("posts", posts);
-    	return "/router/blogs";
+    	return "/router/blog";
    	}
     
     
