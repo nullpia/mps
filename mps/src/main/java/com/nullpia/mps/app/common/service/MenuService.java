@@ -1,5 +1,6 @@
 package com.nullpia.mps.app.common.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,7 +29,17 @@ public class MenuService {
 	public Menu selectMenu(String menuId) {
 		return menuMapper.selectMenu(menuId);
 	}
-	
+
+	public List<Menu> selectPaths(String menuId) {
+		List<Menu> paths = new ArrayList<Menu>();
+		Menu currMenu = menuMapper.selectMenu(menuId);
+		while( currMenu != null) {
+			paths.add(0, currMenu);
+			currMenu = menuMapper.selectMenu(currMenu.getMenuPid());
+		}
+		return paths;
+	}
+
 	@Transactional
 	public Menu insertMenu(Menu menu) {
 		menu.setMenuId(sequenceService.getNewSqno(SequenceService.MENU).toString());
