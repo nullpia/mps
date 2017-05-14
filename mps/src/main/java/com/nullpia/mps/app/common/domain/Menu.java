@@ -1,5 +1,7 @@
 package com.nullpia.mps.app.common.domain;
 
+import java.util.List;
+
 public class Menu {
 	private String menuId;
 	private String menuPid;
@@ -11,6 +13,9 @@ public class Menu {
 	private String creDttm;
 	private String modUsrId;
 	private String modDttm;
+	
+	private Menu parent;
+	private List<Menu> children;
 	
 	public String getMenuId() {
 		return menuId;
@@ -72,6 +77,22 @@ public class Menu {
 	public void setModDttm(String modDttm) {
 		this.modDttm = modDttm;
 	}
+	public Menu getParent() {
+		return parent;
+	}
+	public void setParent(Menu parent) {
+		this.parent = parent;
+	}
+	public List<Menu> getChildren() {
+		return children;
+	}
+	public void setChildren(List<Menu> children) {
+		this.children = children;
+		for (Menu child : children) {
+			child.parent = this;
+		}
+	}
 	
 
+	
 }

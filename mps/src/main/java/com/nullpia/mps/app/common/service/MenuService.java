@@ -12,6 +12,8 @@ import com.nullpia.mps.app.common.mapper.MenuMapper;
 
 @Service
 public class MenuService {
+	public static String ROOT = "ROOT";
+	
 	@Autowired
 	private MenuMapper menuMapper;
 	
@@ -20,6 +22,10 @@ public class MenuService {
 	
 	public List<Menu> listMenu(Menu menu) {
 		return menuMapper.listMenu(menu);
+	}
+	
+	public List<Menu> listChildren(String menuPid) {
+		return menuMapper.listChildren(menuPid);
 	}
 
 	public int countMenu(Menu menu) {

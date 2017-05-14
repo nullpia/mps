@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.nullpia.mps.app.common.mapper.MenuMapper">
-    <select id="listMenu" resultType="com.nullpia.mps.app.common.domain.Menu">
+    <select id="listMenu" parameterType="com.nullpia.mps.app.common.domain.Menu" resultType="com.nullpia.mps.app.common.domain.Menu">
         SELECT A.MENU_ID  	AS MENU_ID
              , A.MENU_PID 	AS MENU_PID
              , A.RESOURCE_ID 	AS RESOURCE_ID
@@ -32,13 +32,24 @@
         AND   A.MENU_NM LIKE CONCAT('%',#{menuNm},'%')
     	</if>
     </select>
-    
-    <select id="countChild" parameterType="String" resultType="int">
-        SELECT count(*) as rowCnt
+
+    <select id="listChildren" parameterType="String" resultType="com.nullpia.mps.app.common.domain.Menu">
+        SELECT A.MENU_ID  	AS MENU_ID
+             , A.MENU_PID 	AS MENU_PID
+             , A.RESOURCE_ID 	AS RESOURCE_ID
+             , A.MENU_NM  	AS MENU_NM
+             , A.LVL_NO   	AS LVL_NO
+             , A.SRT_NO   	AS SRT_NO
+             , A.CRE_USR_ID AS CRE_USR_ID
+             , DATE_FORMAT(A.CRE_DTTM,'%Y%m%d%H%i%s') AS CRE_DTTM
+             , A.MOD_USR_ID AS MOD_USR_ID
+             , DATE_FORMAT(A.MOD_DTTM,'%Y%m%d%H%i%s') AS MOD_DTTM
         FROM   TB_COMM_MENU A
         WHERE 1=1
-        AND   A.MENU_PID = #{menuId}
+        AND   A.MENU_PID = #{menuPid}
+        ORDER BY SRT_NO ASC
     </select>
+
     
     <select id="selectMenu" parameterType="String" resultType="com.nullpia.mps.app.common.domain.Menu">
         SELECT A.MENU_ID  	AS MENU_ID

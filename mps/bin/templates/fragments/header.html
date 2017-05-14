@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 
 <!-- main-header -->
 <header th:fragment="main-header" class="main-header">
@@ -31,24 +31,35 @@
 	<section class="sidebar">
 		<ul class="sidebar-menu">
 			<li class="header">HEADER</li>
-			<!-- Optionally, you can add icons to the links -->
-			
 			<li class="active"><a href="#"><i class="fa fa-link"></i> <span>Link</span></a></li>
 			<li><a href="#"><i class="fa fa-link"></i> <span>Another Link</span></a></li>
-			<li class="treeview"><a href="#"><i class="fa fa-link"></i><span>Multilevel</span>
-				<span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span> </a>
+			<li class="treeview">
+				<a href="#"><i class="fa fa-link"></i><span>Multilevel</span><span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span> </a>
 				<ul class="treeview-menu">
 					<li><a href="#">Link in level 2</a></li>
 					<li><a href="#">Link in level 2</a></li>
 				</ul>
 			</li>
 			
-			<li th:each="m : ${menus}">
-				<a th:href="${#strings.isEmpty(m.resourceId)} ? '#' : ${m.menuId}" th:text="${m.menuNm}"><i class="fa fa-dashboard"></i></a>
-			</li>
-		</ul>
+			<!-- http://stackoverflow.com/questions/25032838/how-to-render-menu-using-thymeleaf-recursively -->
+			
+			<!-- li class="treeview active" th:each="m : ${menus}">
+				<a th:href="${#strings.isEmpty(m.resourceId)} ? '#' : ${m.menuId}" th:text="${m.menuNm}">
+					<i class="fa fa-dashboard"></i>
+				</a>
+				<ul class="treeview-menu">
+					<li><a href="#">Link in level 2</a></li>
+					<li><a href="#">Link in level 2</a></li>
+				</ul>
+			</li-->
+			
+			<!-- recursive -->
+			<li layout:include="/fragments/menuitem::menuitem" th:with="menuitem=${recursiveMenu}"></li>
+			<!-- /recursive -->
+    	</ul>
 	</section>
 </aside>
+
 <!-- /main-sidebar -->
 
 <!-- content-header -->

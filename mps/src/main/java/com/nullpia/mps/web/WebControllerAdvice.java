@@ -1,5 +1,6 @@
 package com.nullpia.mps.web;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -45,7 +46,22 @@ public class WebControllerAdvice {
 			 
 			 List<Menu> menus = menuService.listMenu(new Menu());
 			 model.addAttribute("menus", menus);
+			 	 
+			 //TODO 계층 구조 메뉴를 구성한다.
+			 logger.info("########### 계층 ###############");
+			 Menu home = menuService.selectMenu("index");
+			 recursiveMenus(home);
+			 model.addAttribute("recursiveMenu", home);
 			 
 		 }
-    }
+	 }
+	 
+	 private void recursiveMenus(Menu parent) {
+		 List <Menu> children = menuService.listChildren(parent.getMenuId());
+		 parent.setChildren(children);
+		 
+		 for( Menu child : children) {
+			 recursiveMenus(child);
+		 }
+	 }
 }
