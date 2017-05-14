@@ -10,8 +10,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.nullpia.mps.api.blog.domain.Post;
-import com.nullpia.mps.api.blog.service.PostService;
+import com.nullpia.mps.app.blog.domain.Post;
+import com.nullpia.mps.app.blog.service.PostService;
 import com.nullpia.mps.utility.Dates;
 
 @Controller

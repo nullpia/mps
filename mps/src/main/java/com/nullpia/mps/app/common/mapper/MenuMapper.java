@@ -1,8 +1,8 @@
-package com.nullpia.mps.api.common.mapper;
+package com.nullpia.mps.app.common.mapper;
 
 import org.apache.ibatis.annotations.Mapper;
 
-import com.nullpia.mps.api.common.domain.Menu;
+import com.nullpia.mps.app.common.domain.Menu;
 
 @Mapper
 public interface MenuMapper {

@@ -1,4 +1,4 @@
-package com.nullpia.mps.api.blog.controller;
+package com.nullpia.mps.app.blog.controller;
 
 import java.util.List;
 
@@ -11,12 +11,12 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.nullpia.mps.api.blog.domain.Post;
-import com.nullpia.mps.api.blog.service.PostService;
+import com.nullpia.mps.app.blog.domain.Post;
+import com.nullpia.mps.app.blog.service.PostService;
 
 @Controller
 public class PostController {
-	private static final Logger log = LoggerFactory.getLogger(PostController.class);
+	private static final Logger logger = LoggerFactory.getLogger(PostController.class);
 	
 	@Autowired
 	private PostService postService;

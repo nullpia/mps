@@ -1,12 +1,12 @@
-package com.nullpia.mps.api.common.domain;
+package com.nullpia.mps.app.common.domain;
 
 public class Menu {
 	private String menuId;
 	private String menuPid;
 	private String quickId;
 	private String menuNm;
-	private String lvlNo;
-	private String srtNo;
+	private int lvlNo;
+	private int srtNo;
 	private String creUsrId;
 	private String creDttm;
 	private String modUsrId;
@@ -36,16 +36,16 @@ public class Menu {
 	public void setMenuNm(String menuNm) {
 		this.menuNm = menuNm;
 	}
-	public String getLvlNo() {
+	public int getLvlNo() {
 		return lvlNo;
 	}
-	public void setLvlNo(String lvlNo) {
+	public void setLvlNo(int lvlNo) {
 		this.lvlNo = lvlNo;
 	}
-	public String getSrtNo() {
+	public int getSrtNo() {
 		return srtNo;
 	}
-	public void setSrtNo(String srtNo) {
+	public void setSrtNo(int srtNo) {
 		this.srtNo = srtNo;
 	}
 	public String getCreUsrId() {

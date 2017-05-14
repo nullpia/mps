@@ -1,4 +1,4 @@
-package com.nullpia.mps.api.common.service;
+package com.nullpia.mps.app.common.service;
 
 import java.util.List;
 
@@ -6,8 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.nullpia.mps.api.common.domain.Menu;
-import com.nullpia.mps.api.common.mapper.MenuMapper;
+import com.nullpia.mps.app.common.domain.Menu;
+import com.nullpia.mps.app.common.mapper.MenuMapper;
 
 @Service
 public class MenuService {

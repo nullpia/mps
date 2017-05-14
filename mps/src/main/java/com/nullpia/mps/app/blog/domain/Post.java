@@ -1,4 +1,4 @@
-package com.nullpia.mps.api.blog.domain;
+package com.nullpia.mps.app.blog.domain;
 
 public class Post {
 	private int postId;
